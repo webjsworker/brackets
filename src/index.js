@@ -1,19 +1,27 @@
 module.exports = function check(str, bracketsConfig) {
-  /* return true */
-  /* console.log(str)
-  console.log(bracketsConfig) */
+  /* console.log(bracketsConfig)
+  console.log(str) */
   let result = true ;
-    let value = bracketsConfig.map( (elem) => {
-     /*  console.log(elem) */
+  let strok = str;
+  let answer = ''
+  function Replaser(elem){
     let start = elem[0]
     let end = elem[1]
     const creatRegExp = new RegExp( `[${start}${end}]`, 'gi' );
     const replace = "";
-    let  answer = str.replace(creatRegExp, replace);
-    /* console.log(!answer.length) */
-    /* return !answer.length */
-    result = !answer.length
+      answer = strok.replace(creatRegExp, replace);
+      strok = answer
+   /*  console.log('answer = ' + answer + !answer.length) */
+     result = !answer.length 
     }
-  )
+    
+    let value = bracketsConfig.map( (element)=> {
+      Replaser(element) 
+    })
+  bracketsConfig.reverse()
+  value = bracketsConfig.map( (element)=> {
+    Replaser(element) 
+  })
+  
   return result 
 }
